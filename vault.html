@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault | PlayBoi Love</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="music.html">Music</a>
+  <a href="merch.html">Merch</a>
+  <a href="vault.html">Vault</a>
+</nav>
+
+<header class="hero">
+  <h1>🔒 Vault Locked</h1>
+</header>
+
+<section class="section">
+  <p>Enter access code to unlock exclusive content</p>
+
+  <input type="password" id="code" placeholder="Enter code">
+  <button onclick="check()">Unlock</button>
+
+  <p id="msg"></p>
+</section>
+
+<footer class="footer">
+  © 2026 PlayBoi Love • LoveWorld Productions™ Registered Trademark
+</footer>
+
+<script>
+function check() {
+  let code = document.getElementById("code").value;
+
+  if(code === "heart2026") {
+    window.location.href = "music.html";
+  } else {
+    document.getElementById("msg").innerText = "Access Denied";
+  }
+}
+</script>
+
+</body>
+</html>
