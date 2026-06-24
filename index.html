@@ -1,72 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>PlayBoi Love</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PlayBoi Love • Official Site</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ===== QUICK EMBED STYLE (optional if no CSS file yet) ===== */
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: #000;
+  color: white;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255,0,200,0.25), transparent 40%),
+    radial-gradient(circle at bottom, rgba(160,0,255,0.18), transparent 55%),
+    #000;
+  z-index: -1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 25px;
+  background: rgba(0,0,0,0.75);
+  border-bottom: 1px solid rgba(255,0,200,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  color: #ff2bd6;
+  text-shadow: 0 0 15px #ff2bd6;
+  letter-spacing: 2px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 13px;
+  opacity: 0.85;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ff2bd6;
+  text-shadow: 0 0 10px #ff2bd6, 0 0 25px #a100ff;
+}
+
+.hero {
+  text-align: center;
+  padding: 120px 20px 80px;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 75px;
+  text-shadow: 0 0 20px #ff2bd6, 0 0 40px #a100ff;
+}
+
+.hero p {
+  opacity: 0.75;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 30px;
+  border-radius: 30px;
+  background: linear-gradient(90deg,#ff2bd6,#a100ff);
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+}
+
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+  gap: 14px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,0,200,0.2);
+  padding: 18px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(255,0,200,0.3);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 11px;
+  opacity: 0.6;
+  border-top: 1px solid rgba(255,0,200,0.2);
+}
+
+</style>
+
 </head>
 
 <body>
 
+<div class="bg"></div>
+
+<!-- NAVIGATION -->
 <nav>
-<a href="index.html">Home</a>
-<a href="music.html">Music</a>
-<a href="merch.html">Shop</a>
-<a href="vault.html">Vault</a>
+  <div class="logo">❤️ PLAYBOI LOVE</div>
+
+  <div>
+    <a href="index.html">Home</a>
+    <a href="music.html">Music</a>
+    <a href="merch.html">Shop</a>
+    <a href="vault.html">Vault</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 
-<h1>❤️ PLAYBOI LOVE</h1>
+  <h1>PLAYBOI LOVE</h1>
 
-<p>
-Music • Fashion • Culture • LoveWorld Productions
-</p>
+  <p>Music • Fashion • Culture • LoveWorld Productions</p>
 
-<a href="music.html" class="btn">
-ENTER LOVEWORLD
-</a>
+  <a class="btn" href="vault.html">ENTER VAULT →</a>
 
 </section>
 
+<!-- QUICK ACCESS -->
 <section class="section">
 
-<h2>QUICK LINKS</h2>
+  <h2>QUICK ACCESS</h2>
 
-<br>
+  <div class="grid">
 
-<div class="card-grid">
+    <a class="card" href="music.html">🎧 Music</a>
+    <a class="card" href="merch.html">🛍 Merch</a>
+    <a class="card" href="vault.html">💎 Vault</a>
+    <a class="card" href="news.html">📰 News</a>
+    <a class="card" href="contact.html">📩 Contact</a>
+    <a class="card" href="#">🔥 Campaigns</a>
+    <a class="card" href="#">🎥 Videos</a>
+    <a class="card" href="#">📸 Gallery</a>
 
-<div class="card">SHOP</div>
-<div class="card">NEWS</div>
-<div class="card">CONTACT</div>
-<div class="card">PRIVACY POLICY</div>
-<div class="card">CATALOG</div>
-<div class="card">MUSIC</div>
-<div class="card">APPEARANCES</div>
-<div class="card">CAMPAIGNS</div>
-
-</div>
+  </div>
 
 </section>
 
+<!-- SOCIAL -->
 <section class="section">
 
-<h2>FOLLOW PLAYBOI LOVE</h2>
+  <h2>FOLLOW</h2>
 
-<div class="socials">
-
-<a href="https://instagram.com">📸</a>
-<a href="https://x.com">𝕏</a>
-<a href="https://youtube.com">▶️</a>
-<a href="https://tiktok.com">🎵</a>
-
-</div>
+  <p style="opacity:0.7;">Stay connected with the movement</p>
 
 </section>
 
+<!-- FOOTER -->
 <footer>
-2026 ®️ PlayBoi Love • LoveWorld Productions®️
+  © 2026 PLAYBOI LOVE • LOVEWORLD PRODUCTIONS
 </footer>
 
 </body>
