@@ -9,6 +9,7 @@
 
 <style>
 
+/* BASE */
 body {
   margin:0;
   font-family: Orbitron;
@@ -16,7 +17,7 @@ body {
   color:white;
 }
 
-/* GLOW BACKGROUND (same everywhere) */
+/* BACKGROUND GLOW */
 .bg {
   position:fixed;
   inset:0;
@@ -26,7 +27,7 @@ body {
   z-index:-1;
 }
 
-/* NAV (same everywhere) */
+/* NAV (UNIFIED) */
 nav {
   display:flex;
   justify-content:space-between;
@@ -90,7 +91,7 @@ nav a {
   font-size:40px;
 }
 
-/* CARDS */
+/* GRID CARDS */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
@@ -103,14 +104,25 @@ nav a {
   padding:15px;
   border-radius:12px;
   background:rgba(255,255,255,0.03);
+  box-shadow:0 0 15px rgba(255,0,200,0.15);
 }
 
-/* SOCIAL */
-.socials a {
-  font-size:24px;
-  margin:0 10px;
-  text-decoration:none;
-  color:white;
+/* SOCIAL ICONS */
+.socials {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.socials a img {
+  width:38px;
+  transition:0.2s;
+  filter:drop-shadow(0 0 6px #ff2bd6);
+}
+
+.socials a img:hover {
+  transform:scale(1.15);
 }
 
 /* FOOTER */
@@ -154,26 +166,34 @@ footer {
   <h2>QUICK LINKS</h2>
 
   <div class="grid">
-
-    <div class="card">SHOP</div>
-    <div class="card">MUSIC</div>
-    <div class="card">VAULT</div>
     <div class="card">NEWS</div>
     <div class="card">CONTACT</div>
     <div class="card">CAMPAIGNS</div>
-
   </div>
 </div>
 
-<!-- SOCIAL -->
+<!-- SOCIALS -->
 <div class="section">
-  <h2>FOLLOW</h2>
+  <h2>FOLLOW PLAYBOI LOVE</h2>
 
   <div class="socials">
-    <a href="#">📸</a>
-    <a href="#">𝕏</a>
-    <a href="#">▶️</a>
-    <a href="#">🎵</a>
+
+    <a href="https://instagram.com" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png">
+    </a>
+
+    <a href="https://x.com" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png">
+    </a>
+
+    <a href="https://youtube.com" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    </a>
+
+    <a href="https://tiktok.com" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+    </a>
+
   </div>
 </div>
 
