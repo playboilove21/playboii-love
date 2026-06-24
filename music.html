@@ -1,20 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Music</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayBoi Love • Music</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;background:black;color:white;font-family:Orbitron;}
-nav{display:flex;justify-content:space-between;padding:15px;border-bottom:1px solid #ff2bd6;}
-nav a{color:white;margin:0 10px;text-decoration:none;}
-.logo{color:#ff2bd6;font-family:Bebas Neue;}
-.card{border:1px solid #ff2bd6;padding:15px;margin:10px;border-radius:10px;}
+
+/* BASE */
+body {
+  margin:0;
+  font-family: Orbitron;
+  background:black;
+  color:white;
+}
+
+/* SAME BACKGROUND SYSTEM */
+.bg {
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(255,0,200,0.25), transparent 40%),
+    radial-gradient(circle at bottom, rgba(160,0,255,0.18), transparent 60%);
+  z-index:-1;
+}
+
+/* NAV (MATCH ALL PAGES) */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  border-bottom:1px solid #ff2bd6;
+}
+
+.logo {
+  font-family:Bebas Neue;
+  font-size:24px;
+  color:#ff2bd6;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+/* HERO HEADER */
+.hero {
+  text-align:center;
+  padding:60px 20px 30px;
+}
+
+.hero h1 {
+  font-family:Bebas Neue;
+  font-size:60px;
+  color:#ff2bd6;
+  text-shadow:0 0 20px rgba(255,0,200,0.4);
+  margin:0;
+}
+
+.hero p {
+  opacity:0.7;
+  font-size:14px;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:15px;
+  padding:20px;
+}
+
+/* CARD STYLE (MATCH HOME + VAULT) */
+.card {
+  border:1px solid #ff2bd6;
+  border-radius:12px;
+  padding:15px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 0 15px rgba(255,0,200,0.12);
+  transition:0.2s;
+}
+
+.card:hover {
+  transform:scale(1.02);
+}
+
+/* BUTTON STYLE (CONSISTENT BRAND) */
+.btn {
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 18px;
+  border-radius:20px;
+  background:linear-gradient(90deg,#ff2bd6,#a100ff);
+  color:black;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #ff2bd6;
+  margin-top:40px;
+  font-size:12px;
+  opacity:0.7;
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="bg"></div>
+
+<!-- NAV -->
 <nav>
   <div class="logo">PLAYBOI LOVE</div>
   <div>
@@ -26,10 +129,39 @@ nav a{color:white;margin:0 10px;text-decoration:none;}
   </div>
 </nav>
 
-<h1 style="text-align:center;color:#ff2bd6;">MUSIC</h1>
+<!-- HERO -->
+<div class="hero">
+  <h1>MUSIC</h1>
+  <p>Latest drops • Exclusives • Unreleased heat</p>
+</div>
 
-<div class="card">🔥 New Track 1</div>
-<div class="card">🎧 Exclusive Drop</div>
+<!-- MUSIC GRID -->
+<div class="grid">
+
+  <div class="card">
+    🔥 <h3>New Track 01</h3>
+    <p>Official PlayBoi Love release</p>
+    <a class="btn" href="#">Play</a>
+  </div>
+
+  <div class="card">
+    🎧 <h3>Unreleased Demo</h3>
+    <p>Vault preview snippet</p>
+    <a class="btn" href="#">Listen</a>
+  </div>
+
+  <div class="card">
+    💿 <h3>Exclusive Drop</h3>
+    <p>Limited release content</p>
+    <a class="btn" href="#">Access</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  PlayBoi Love © 2026 • LoveWorld Productions
+</footer>
 
 </body>
 </html>
