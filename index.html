@@ -1,109 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PlayBoi Love</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-
-/* =========================
-   GLOBAL STYLE SYSTEM
-========================= */
-
-body {
-  margin: 0;
-  font-family: Orbitron;
-  background: black;
-  color: white;
-}
-
-/* BACKGROUND (same across ALL pages) */
 .bg {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(circle at top, rgba(255,0,200,0.25), transparent 40%),
-    radial-gradient(circle at bottom, rgba(160,0,255,0.18), transparent 60%);
+
+  /* fallback color so site NEVER breaks */
+  background: black;
+
+  /* image only shows if it exists */
+  background-image: url("assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   z-index: -2;
 }
 
+/* neon overlay (safe + controlled opacity) */
 .overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,0,200,0.2), rgba(0,0,0,0.85));
+  background: radial-gradient(
+    circle at top,
+    rgba(255,0,200,0.25),
+    rgba(0,0,0,0.75)
+  );
   z-index: -1;
 }
-
-/* NAV (IDENTICAL ON ALL PAGES) */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  border-bottom: 1px solid #ff2bd6;
-}
-
-.logo {
-  font-family: Bebas Neue;
-  font-size: 24px;
-  color: #ff2bd6;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 70px 20px;
-}
-
-.hero h1 {
-  font-family: Bebas Neue;
-  font-size: 70px;
-  color: #ff2bd6;
-  text-shadow: 0 0 25px rgba(255,0,200,0.4);
-  margin: 0;
-}
-
-.hero p {
-  opacity: 0.7;
-  font-size: 14px;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 25px;
-  background: linear-gradient(90deg,#ff2bd6,#a100ff);
-  color: black;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-/* GRID / CARDS (same everywhere) */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.card {
-  border: 1px solid #ff2bd6;
-  padding: 15px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.03);
-  box-shadow: 0 0 15px rgba(255,0,200,0.12);
-}
-
-/* SOCIALS */
-.socials {
-  display: flex
