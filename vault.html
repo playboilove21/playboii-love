@@ -1,48 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vault | PlayBoi Love</title>
-<link rel="stylesheet" href="style.css">
+<title>PlayBoi Love • Vault</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin:0;
+  font-family: Orbitron;
+  background:black;
+  color:white;
+}
+
+/* BACKGROUND GLOW */
+.bg {
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(255,0,200,0.25), transparent 40%),
+    radial-gradient(circle at bottom, rgba(160,0,255,0.18), transparent 60%);
+  z-index:-1;
+}
+
+/* NAV */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  border-bottom:1px solid #ff2bd6;
+}
+
+.logo {
+  font-family:Bebas Neue;
+  font-size:24px;
+  color:#ff2bd6;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+/* CENTER LOGIN */
+.center {
+  text-align:center;
+  margin-top:80px;
+}
+
+h1 {
+  font-family:Bebas Neue;
+  font-size:60px;
+  color:#ff2bd6;
+}
+
+/* INPUT */
+input {
+  width:260px;
+  padding:12px;
+  margin-top:10px;
+  background:black;
+  border:1px solid #ff2bd6;
+  color:white;
+  border-radius:8px;
+}
+
+/* BUTTON */
+button {
+  width:260px;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#ff2bd6,#a100ff);
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* VAULT CONTENT */
+.vault {
+  display:none;
+  padding:40px 20px;
+  text-align:center;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:15px;
+  margin-top:30px;
+}
+
+.card {
+  border:1px solid #ff2bd6;
+  border-radius:12px;
+  padding:15px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 0 20px rgba(255,0,200,0.2);
+}
+
+/* LOCK ICON STYLE */
+.lock {
+  font-size:60px;
+  margin-bottom:10px;
+}
+
+/* SMALL TEXT */
+.small {
+  font-size:12px;
+  opacity:0.7;
+}
+
+</style>
 </head>
 
 <body>
 
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="music.html">Music</a>
-  <a href="merch.html">Merch</a>
-  <a href="vault.html">Vault</a>
+<div class="bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PLAYBOI LOVE VAULT</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="music.html">Music</a>
+    <a href="merch.html">Merch</a>
+  </div>
 </nav>
 
-<header class="hero">
-  <h1>🔒 Vault Locked</h1>
-</header>
+<!-- LOGIN SECTION -->
+<div class="center" id="login">
 
-<section class="section">
-  <p>Enter access code to unlock exclusive content</p>
+  <div class="lock">🔐</div>
 
-  <input type="password" id="code" placeholder="Enter code">
-  <button onclick="check()">Unlock</button>
+  <h1>VAULT</h1>
+  <p class="small">Enter access code to unlock exclusive content</p>
 
-  <p id="msg"></p>
-</section>
+  <input id="code" placeholder="Enter Access Code">
+  <button onclick="unlock()">Unlock Vault</button>
 
-<footer class="footer">
-  © 2026 PlayBoi Love • LoveWorld Productions™ Registered Trademark
-</footer>
+  <p class="small">Hint: Paid members receive code after verification</p>
+
+</div>
+
+<!-- VAULT CONTENT -->
+<div class="vault" id="vault">
+
+  <h1>💎 WELCOME INSIDE</h1>
+  <p class="small">PlayBoi Love Exclusive Vault</p>
+
+  <div class="grid">
+
+    <div class="card">
+      🎧 <h3>Unreleased Track #1</h3>
+      <p>Private studio leak</p>
+    </div>
+
+    <div class="card">
+      🔥 <h3>Exclusive Drop</h3>
+      <p>Early access music</p>
+    </div>
+
+    <div class="card">
+      📸 <h3>Behind The Scenes</h3>
+      <p>Private visuals & sessions</p>
+    </div>
+
+    <div class="card">
+      💿 <h3>Vault Archive</h3>
+      <p>Legacy unreleased catalog</p>
+    </div>
+
+  </div>
+
+</div>
 
 <script>
-function check() {
-  let code = document.getElementById("code").value;
 
-  if(code === "heart2026") {
-    window.location.href = "music.html";
+/* MAIN ACCESS CODE */
+const ACCESS_CODE = "PBLACCESS";
+
+function unlock() {
+  const input = document.getElementById("code").value;
+
+  if (input === ACCESS_CODE) {
+
+    localStorage.setItem("vaultUnlocked", "true");
+
+    document.getElementById("login").style.display = "none";
+    document.getElementById("vault").style.display = "block";
+
   } else {
-    document.getElementById("msg").innerText = "Access Denied";
+    alert("Invalid access code");
   }
 }
+
+/* AUTO-UNLOCK IF ALREADY VERIFIED */
+window.onload = function () {
+  if (localStorage.getItem("vaultUnlocked") === "true") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("vault").style.display = "block";
+  }
+};
+
 </script>
 
 </body>
