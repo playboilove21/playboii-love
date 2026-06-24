@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayBoi Love • Vault</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin:0;
+  font-family: Orbitron;
+  background:black;
+  color:white;
+}
+
+/* BACKGROUND (same vibe as other pages) */
+.bg {
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(255,0,200,0.25), transparent 40%),
+    radial-gradient(circle at bottom, rgba(160,0,255,0.18), transparent 60%);
+  z-index:-1;
+}
+
+/* NAV (same across all pages) */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  border-bottom:1px solid #ff2bd6;
+}
+
+.logo {
+  font-family:Bebas Neue;
+  font-size:24px;
+  color:#ff2bd6;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:60px 20px;
+}
+
+.hero h1 {
+  font-family:Bebas Neue;
+  font-size:60px;
+  color:#ff2bd6;
+  text-shadow:0 0 20px rgba(255,0,200,0.5);
+}
+
+/* LOGIN BOX */
+.box {
+  max-width:350px;
+  margin:0 auto;
+  text-align:center;
+}
+
+input {
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:black;
+  border:1px solid #ff2bd6;
+  color:white;
+  border-radius:8px;
+}
+
+button {
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#ff2bd6,#a100ff);
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* VAULT GRID */
+.vault {
+  display:none;
+  padding:20px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:15px;
+  margin-top:20px;
+}
+
+.card {
+  border:1px solid #ff2bd6;
+  padding:15px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.03);
+}
+
+.small {
+  font-size:12px;
+  opacity:0.7;
+}
+
+footer {
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #ff2bd6;
+  margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PLAYBOI LOVE</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="music.html">Music</a>
+    <a href="merch.html">Merch</a>
+    <a href="vault.html">Vault</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>VAULT</h1>
+  <p class="small">Exclusive subscription content ($15/mo)</p>
+</div>
+
+<!-- LOGIN -->
+<div class="box" id="lock">
+
+  <input id="code" placeholder="Enter Access Code">
+  <button onclick="unlock()">Unlock Vault</button>
+
+  <p class="small">Access code given after payment verification</p>
+
+</div>
+
+<!-- VAULT CONTENT -->
+<div class="vault" id="vault">
+
+  <div class="grid">
+
+    <div class="card">🎧 Unreleased Track #1</div>
+    <div class="card">🔥 Exclusive Drop</div>
+    <div class="card">📸 Behind The Scenes</div>
+    <div class="card">💿 Archive Vault</div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  PlayBoi Love © 2026
+</footer>
+
+<script>
+
+const CODE = "PBLACCESS";
+
+function unlock() {
+  const input = document.getElementById("code").value;
+
+  if (input === CODE) {
+    localStorage.setItem("vault_unlocked", "true");
+
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("vault").style.display = "block";
+  } else {
+    alert("Invalid access code");
+  }
+}
+
+/* AUTO UNLOCK */
+window.onload = function () {
+  if (localStorage.getItem("vault_unlocked") === "true") {
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("vault").style.display = "block";
+  }
+};
+
+</script>
+
+</body>
+</html>
