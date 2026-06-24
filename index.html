@@ -1,11 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayBoi Love</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   BASE
+========================= */
+
+body {
+  margin: 0;
+  font-family: Orbitron;
+  background: black;
+  color: white;
+}
+
+/* =========================
+   BACKGROUND SYSTEM (SAFE)
+========================= */
+
 .bg {
   position: fixed;
   inset: 0;
 
-  /* fallback color so site NEVER breaks */
-  background: black;
+  background-color: black;
 
-  /* image only shows if it exists */
   background-image: url("assets/background.jpg");
   background-size: cover;
   background-position: center;
@@ -14,14 +38,313 @@
   z-index: -2;
 }
 
-/* neon overlay (safe + controlled opacity) */
 .overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(
-    circle at top,
-    rgba(255,0,200,0.25),
-    rgba(0,0,0,0.75)
-  );
+  background: radial-gradient(circle at top, rgba(255,0,200,0.25), rgba(0,0,0,0.75));
   z-index: -1;
 }
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #ff2bd6;
+}
+
+.logo {
+  font-family: Bebas Neue;
+  font-size: 24px;
+  color: #ff2bd6;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.hero h1 {
+  font-family: Bebas Neue;
+  font-size: 70px;
+  color: #ff2bd6;
+  text-shadow: 0 0 25px rgba(255,0,200,0.4);
+  margin: 0;
+}
+
+.hero p {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  background: linear-gradient(90deg,#ff2bd6,#a100ff);
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  border: 1px solid #ff2bd6;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  box-shadow: 0 0 15px rgba(255,0,200,0.12);
+}
+
+/* =========================
+   SOCIALS
+========================= */
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.socials img {
+  width: 35px;
+  filter: drop-shadow(0 0 6px #ff2bd6);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #ff2bd6;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* =========================
+   GLITCH POPUP
+========================= */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  width: 330px;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #ff2bd6;
+  background: black;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255,0,200,0.3);
+}
+
+/* GLITCH TITLE */
+.glitch-text {
+  font-family: Bebas Neue;
+  font-size: 34px;
+  color: #ff2bd6;
+  position: relative;
+  animation: flicker 1.5s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.glitch-text::before {
+  color: #a100ff;
+  animation: glitchTop 0.8s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  color: white;
+  animation: glitchBottom 0.8s infinite linear alternate-reverse;
+}
+
+/* SCANLINE */
+.scanline {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,0,200,0.6);
+  animation: scan 2s linear infinite;
+  top: 0;
+}
+
+/* BUTTONS */
+.free {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+.paid {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(90deg,#ff2bd6,#a100ff);
+  color: black;
+  font-weight: bold;
+}
+
+/* ANIMATIONS */
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes glitchTop {
+  0% { transform: translate(0,0); }
+  20% { transform: translate(-2px,-2px); }
+  40% { transform: translate(2px,0); }
+  60% { transform: translate(-1px,2px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes glitchBottom {
+  0% { transform: translate(0,0); }
+  20% { transform: translate(2px,2px); }
+  40% { transform: translate(-2px,0); }
+  60% { transform: translate(1px,-2px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PLAYBOI LOVE</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="music.html">Music</a>
+    <a href="merch.html">Merch</a>
+    <a href="vault.html">Vault</a>
+    <a href="login-log-out.html">Login</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>PLAYBOI LOVE</h1>
+  <p>Music • Fashion • Culture</p>
+  <a class="btn" href="music.html">ENTER</a>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="grid">
+  <div class="card">NEWS</div>
+  <div class="card">CONTACT</div>
+  <div class="card">CAMPAIGNS</div>
+</div>
+
+<!-- SOCIALS -->
+<div class="socials">
+  <a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></a>
+  <a href="https://x.com"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png"></a>
+  <a href="https://youtube.com"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
+  <a href="https://tiktok.com"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"></a>
+</div>
+
+<footer>
+  PlayBoi Love © 2026
+</footer>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+
+  <div class="popup-box">
+
+    <div class="scanline"></div>
+
+    <h1 class="glitch-text" data-text="PLAYBOI LOVE">PLAYBOI LOVE</h1>
+
+    <p>IDENTITY LOADING...</p>
+
+    <button class="free" onclick="freeAccess()">Join Free ($0)</button>
+    <button class="paid" onclick="paidAccess()">$15/mo Vault Access</button>
+
+  </div>
+
+</div>
+
+<script>
+
+window.onload = function () {
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "flex";
+  }, 500);
+}
+
+function freeAccess() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function paidAccess() {
+  document.getElementById("popup").style.display = "none";
+  window.location.href = "vault.html";
+}
+
+</script>
+
+</body>
+</html>
