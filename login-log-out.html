@@ -1,125 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<title>Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PlayBoi Love • Login</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
-body {
-  margin:0;
-  font-family: Orbitron;
-  background:black;
-  color:white;
-}
-
-/* BACKGROUND */
-.bg {
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top, rgba(255,0,200,0.25), transparent 40%),
-    radial-gradient(circle at bottom, rgba(160,0,255,0.18), transparent 60%);
-  z-index:-1;
-}
-
-/* NAV (MATCH ALL PAGES) */
-nav {
-  display:flex;
-  justify-content:space-between;
-  padding:15px;
-  border-bottom:1px solid #ff2bd6;
-}
-
-.logo {
-  font-family:Bebas Neue;
-  font-size:24px;
-  color:#ff2bd6;
-}
-
-nav a {
-  color:white;
-  text-decoration:none;
-  margin:0 10px;
-}
-
-/* CENTER BOX */
-.container {
-  max-width:360px;
-  margin:120px auto;
-  padding:20px;
-  text-align:center;
-  border:1px solid #ff2bd6;
-  border-radius:12px;
-  background:rgba(255,255,255,0.03);
-  box-shadow:0 0 20px rgba(255,0,200,0.15);
-}
-
-h1 {
-  font-family:Bebas Neue;
-  color:#ff2bd6;
-  font-size:40px;
-}
-
-/* INPUTS */
-input {
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border-radius:8px;
-  border:1px solid #ff2bd6;
-  background:black;
-  color:white;
-}
-
-/* BUTTONS */
-button {
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border:none;
-  border-radius:25px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.loginBtn {
-  background:linear-gradient(90deg,#ff2bd6,#a100ff);
-  color:black;
-}
-
-.logoutBtn {
-  background:white;
-  color:black;
-}
-
-/* STATUS */
-.status {
-  margin-top:15px;
-  font-size:13px;
-  opacity:0.8;
-}
-
-.badge {
-  font-size:12px;
-  padding:5px 10px;
-  border:1px solid #ff2bd6;
-  border-radius:20px;
-  display:inline-block;
-  margin-bottom:10px;
-}
-
+body{margin:0;background:black;color:white;font-family:Orbitron;}
+nav{display:flex;justify-content:space-between;padding:15px;border-bottom:1px solid #ff2bd6;}
+nav a{color:white;margin:0 10px;text-decoration:none;}
+.logo{color:#ff2bd6;font-family:Bebas Neue;}
+.box{text-align:center;margin-top:100px;}
+input{padding:10px;margin:5px;border:1px solid #ff2bd6;background:black;color:white;}
+button{padding:10px;margin:5px;border:none;background:#ff2bd6;}
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
-<!-- NAV -->
 <nav>
   <div class="logo">PLAYBOI LOVE</div>
   <div>
@@ -127,58 +24,37 @@ button {
     <a href="music.html">Music</a>
     <a href="merch.html">Merch</a>
     <a href="vault.html">Vault</a>
+    <a href="login-log-out.html">Login</a>
   </div>
 </nav>
 
-<!-- LOGIN BOX -->
-<div class="container">
+<div class="box">
+  <h1>LOGIN</h1>
 
-  <div class="badge">LOGIN SYSTEM</div>
+  <input id="u" placeholder="user">
+  <input id="p" type="password" placeholder="pass">
 
-  <h1>ACCOUNT</h1>
+  <button onclick="login()">Login</button>
+  <button onclick="logout()">Logout</button>
 
-  <input id="user" placeholder="Username">
-  <input id="pass" type="password" placeholder="Password">
-
-  <button class="loginBtn" onclick="login()">Login</button>
-  <button class="logoutBtn" onclick="logout()">Logout</button>
-
-  <div class="status" id="status">Not logged in</div>
-
+  <p id="status"></p>
 </div>
 
 <script>
-
-/* SIMPLE SESSION LOGIN (NOT VAULT CONTROL) */
-const USER = "ADMIN";
-const PASS = "Permission";
-
-/* LOGIN */
-function login() {
-  const u = document.getElementById("user").value;
-  const p = document.getElementById("pass").value;
-
-  if (u === USER && p === PASS) {
-    localStorage.setItem("pbl_login", "true");
-    document.getElementById("status").innerText = "Logged in (session active)";
-  } else {
-    alert("Incorrect login");
-  }
+function login(){
+if(document.getElementById("u").value==="ADMIN" &&
+document.getElementById("p").value==="Permission"){
+localStorage.setItem("login","true");
+document.getElementById("status").innerText="Logged in";
+}else{
+alert("wrong");
+}
 }
 
-/* LOGOUT */
-function logout() {
-  localStorage.removeItem("pbl_login");
-  document.getElementById("status").innerText = "Not logged in";
+function logout(){
+localStorage.removeItem("login");
+document.getElementById("status").innerText="Logged out";
 }
-
-/* CHECK STATE */
-window.onload = function () {
-  if (localStorage.getItem("pbl_login") === "true") {
-    document.getElementById("status").innerText = "Logged in (session active)";
-  }
-};
-
 </script>
 
 </body>
