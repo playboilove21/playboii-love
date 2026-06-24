@@ -9,6 +9,7 @@
 
 <style>
 
+/* BASE */
 body {
   margin:0;
   font-family: Orbitron;
@@ -16,7 +17,7 @@ body {
   color:white;
 }
 
-/* BACKGROUND GLOW */
+/* GLOW BACKGROUND */
 .bg {
   position:fixed;
   inset:0;
@@ -26,7 +27,7 @@ body {
   z-index:-1;
 }
 
-/* NAV */
+/* NAV (MATCH ALL OTHER PAGES) */
 nav {
   display:flex;
   justify-content:space-between;
@@ -46,21 +47,34 @@ nav a {
   margin:0 10px;
 }
 
-/* CENTER LOGIN */
-.center {
+/* HERO */
+.hero {
   text-align:center;
-  margin-top:80px;
+  padding:50px 20px;
 }
 
-h1 {
+.hero h1 {
   font-family:Bebas Neue;
   font-size:60px;
   color:#ff2bd6;
+  text-shadow:0 0 20px rgba(255,0,200,0.5);
 }
 
-/* INPUT */
+.hero p {
+  opacity:0.8;
+  font-size:14px;
+}
+
+/* LOGIN BOX */
+.lock-box {
+  max-width:360px;
+  margin:0 auto;
+  text-align:center;
+  padding:20px;
+}
+
 input {
-  width:260px;
+  width:100%;
   padding:12px;
   margin-top:10px;
   background:black;
@@ -69,15 +83,13 @@ input {
   border-radius:8px;
 }
 
-/* BUTTON */
 button {
-  width:260px;
+  width:100%;
   padding:12px;
   margin-top:10px;
   border:none;
   border-radius:25px;
   background:linear-gradient(90deg,#ff2bd6,#a100ff);
-  color:black;
   font-weight:bold;
   cursor:pointer;
 }
@@ -85,15 +97,14 @@ button {
 /* VAULT CONTENT */
 .vault {
   display:none;
-  padding:40px 20px;
-  text-align:center;
+  padding:20px;
 }
 
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
   gap:15px;
-  margin-top:30px;
+  margin-top:20px;
 }
 
 .card {
@@ -101,17 +112,15 @@ button {
   border-radius:12px;
   padding:15px;
   background:rgba(255,255,255,0.03);
-  box-shadow:0 0 20px rgba(255,0,200,0.2);
+  box-shadow:0 0 15px rgba(255,0,200,0.15);
 }
 
-/* LOCK ICON STYLE */
-.lock {
-  font-size:60px;
-  margin-bottom:10px;
-}
-
-/* SMALL TEXT */
-.small {
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #ff2bd6;
+  margin-top:40px;
   font-size:12px;
   opacity:0.7;
 }
@@ -125,74 +134,83 @@ button {
 
 <!-- NAV -->
 <nav>
-  <div class="logo">PLAYBOI LOVE VAULT</div>
+  <div class="logo">PLAYBOI LOVE</div>
   <div>
     <a href="index.html">Home</a>
     <a href="music.html">Music</a>
     <a href="merch.html">Merch</a>
+    <a href="vault.html">Vault</a>
   </div>
 </nav>
 
-<!-- LOGIN SECTION -->
-<div class="center" id="login">
-
-  <div class="lock">🔐</div>
-
+<!-- HERO -->
+<div class="hero">
   <h1>VAULT</h1>
-  <p class="small">Enter access code to unlock exclusive content</p>
+  <p>Exclusive $15/mo Content Access</p>
+</div>
 
-  <input id="code" placeholder="Enter Access Code">
-  <button onclick="unlock()">Unlock Vault</button>
+<!-- LOCK SCREEN -->
+<div class="lock-box" id="lock">
 
-  <p class="small">Hint: Paid members receive code after verification</p>
+  <p>Enter Access Code</p>
+
+  <input id="code" placeholder="PBL ACCESS CODE">
+  <button onclick="unlock()">ENTER VAULT</button>
+
+  <p style="font-size:12px; opacity:0.6; margin-top:10px;">
+    Code is given after subscription verification
+  </p>
 
 </div>
 
 <!-- VAULT CONTENT -->
 <div class="vault" id="vault">
 
-  <h1>💎 WELCOME INSIDE</h1>
-  <p class="small">PlayBoi Love Exclusive Vault</p>
-
   <div class="grid">
 
     <div class="card">
       🎧 <h3>Unreleased Track #1</h3>
-      <p>Private studio leak</p>
+      <p>Private studio session leak</p>
     </div>
 
     <div class="card">
       🔥 <h3>Exclusive Drop</h3>
-      <p>Early access music</p>
+      <p>Early access music release</p>
     </div>
 
     <div class="card">
       📸 <h3>Behind The Scenes</h3>
-      <p>Private visuals & sessions</p>
+      <p>Studio + lifestyle footage</p>
     </div>
 
     <div class="card">
       💿 <h3>Vault Archive</h3>
-      <p>Legacy unreleased catalog</p>
+      <p>Full unreleased catalog</p>
     </div>
 
   </div>
 
 </div>
 
+<!-- FOOTER -->
+<footer>
+  PlayBoi Love © 2026 • LoveWorld Productions
+</footer>
+
 <script>
 
-/* MAIN ACCESS CODE */
+/* ACCESS CODE */
 const ACCESS_CODE = "PBLACCESS";
 
+/* UNLOCK FUNCTION */
 function unlock() {
   const input = document.getElementById("code").value;
 
   if (input === ACCESS_CODE) {
 
-    localStorage.setItem("vaultUnlocked", "true");
+    localStorage.setItem("pbl_vault", "true");
 
-    document.getElementById("login").style.display = "none";
+    document.getElementById("lock").style.display = "none";
     document.getElementById("vault").style.display = "block";
 
   } else {
@@ -200,10 +218,10 @@ function unlock() {
   }
 }
 
-/* AUTO-UNLOCK IF ALREADY VERIFIED */
+/* AUTO UNLOCK IF ALREADY VERIFIED */
 window.onload = function () {
-  if (localStorage.getItem("vaultUnlocked") === "true") {
-    document.getElementById("login").style.display = "none";
+  if (localStorage.getItem("pbl_vault") === "true") {
+    document.getElementById("lock").style.display = "none";
     document.getElementById("vault").style.display = "block";
   }
 };
